@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
 // ----------------------------------------------------------------------
 
 export default function Contact() {
-  const [isSending, setIsSending] = useState(false);
+  // const [isSending, setIsSending] = useState(false);
 
   const formRef = useRef();
 
@@ -20,7 +20,7 @@ export default function Contact() {
     e.preventDefault();
 
     try {
-      setIsSending(true);
+      // setIsSending(true);
 
       // await emailjs.sendForm(
       //   process.env.EMAIL_SERVICE_ID,
@@ -56,13 +56,13 @@ export default function Contact() {
           Swal.resumeTimer();
         },
         didClose: () => {
-          clearInterval(timerInterval);
+          // clearInterval(timerInterval);
         }
       });
     } catch (error) {
       // intentional
     } finally {
-      setIsSending(false);
+      // setIsSending(false);
     }
   };
   return (
