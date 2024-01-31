@@ -7,6 +7,7 @@ import HeadingAnimate from '../components/animate/HeadingAnimate';
 import LoadAnimate from '../components/animate/LoadAnimate';
 // mock
 import { contactEmail } from '../mock/profile';
+import Swal from 'sweetalert2';
 
 // ----------------------------------------------------------------------
 
@@ -21,12 +22,43 @@ export default function Contact() {
     try {
       setIsSending(true);
 
+      // await emailjs.sendForm(
+      //   process.env.EMAIL_SERVICE_ID,
+      //   process.env.EMAIL_TEMPLATE_ID,
+      //   formRef.current,
+      //   process.env.PUBLIC_KEY
+      // );
       await emailjs.sendForm(
-        process.env.EMAIL_SERVICE_ID,
-        process.env.EMAIL_TEMPLATE_ID,
-        formRef.current,
-        process.env.PUBLIC_KEY
+        'service_welcfab',
+        'template_tgw98d5',
+          formRef.current,
+          "TGY1mtG78xqGrHk9J"
       );
+      await Swal.fire({
+        title: 'Success!',
+        icon: 'success',
+        text: 'Message sent successfully',
+        showConfirmButton: false,
+        timer: 1500, // milliseconds
+        willOpen: () => {
+          // Animate the tick icon
+          Swal.showLoading();
+          const timerInterval = setInterval(() => {
+            const content = Swal.getPopup();
+            if (content) {
+              const tickIcon = content.querySelector('.swal2-success-circular-line-left');
+              if (tickIcon) {
+                tickIcon.style.animation = 'rotate-loading 1.5s linear infinite';
+              }
+            }
+          }, 100);
+          Swal.stopTimer();
+          Swal.resumeTimer();
+        },
+        didClose: () => {
+          clearInterval(timerInterval);
+        }
+      });
     } catch (error) {
       // intentional
     } finally {
@@ -52,7 +84,7 @@ export default function Contact() {
         <LoadAnimate amount={0}>
           <form ref={formRef} onSubmit={sendEmail}>
             <div className="-m-2 flex flex-wrap">
-              <div className="w-full p-2 sm:w-1/2">
+              {/* <div className="w-full p-2 sm:w-1/2">
                 <label htmlFor="name" className="mb:1 text-sm leading-7">
                   Name
                 </label>
@@ -87,7 +119,7 @@ export default function Contact() {
                   name="message"
                   required
                   className="h-32 w-full resize-none rounded border border-primary-700/70 bg-primary-100/20 py-1 px-3 text-base leading-8 outline-none transition-colors duration-200 ease-in-out focus:ring-1 focus:ring-primary-700/70 dark:border-primary-300/50 dark:bg-primary-300/10 dark:focus:ring-primary-300/50"
-                  defaultValue={'Hello Dhaval,'}
+                  defaultValue={'Hello Kartavya,'}
                 />
               </div>
               <div className="flex w-full justify-end p-2">
@@ -106,7 +138,7 @@ export default function Contact() {
                     </>
                   )}
                 </button>
-              </div>
+              </div> */}
               <div className="mt-4 w-full border-t border-neutral-700/50 p-2 pt-6 text-center dark:border-neutral-300/50">
                 <a
                   href={`mailto:${contactEmail}?subject=Inquiry&body=Hello Dhaval`}
@@ -120,9 +152,9 @@ export default function Contact() {
                     classes="inline-block text-lg mr-1 text-primary-700 dark:text-primary-300"
                     icon="bytesize:location"
                   />
-                  Ahmedabad
+                  Vancouver
                   <br />
-                  Gujarat, India
+                  BC, Canada
                 </p>
                 <div className="flex w-full justify-center">
                   <SocialLinks />

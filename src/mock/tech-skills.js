@@ -36,11 +36,18 @@ export const FRONTEND_SKILLS = [
     iconClasses: 'text-3xl',
   },
   {
-    label: 'Gatsby',
-    proficiency: '90%',
-    icon: 'logos:gatsby',
+    label: 'Angular',
+    proficiency: '80%',
+    icon: 'logos:angular-icon',
     iconClasses: 'text-3xl',
   },
+  {
+    label: 'Stripe',
+    proficiency: '90%',
+    icon: 'logos:stripe',
+    iconClasses: 'text-2xl',
+  },
+  
   {
     label: 'Material UI (mui)',
     proficiency: '90%',
@@ -53,24 +60,14 @@ export const FRONTEND_SKILLS = [
     icon: 'logos:tailwindcss-icon',
     iconClasses: 'text-2xl',
   },
-  {
-    label: 'SCSS',
-    proficiency: '90%',
-    icon: 'vscode-icons:file-type-scss2',
-    iconClasses: 'text-3xl',
-  },
+
   {
     label: 'Bootstrap',
     proficiency: '90%',
     icon: 'logos:bootstrap',
     iconClasses: 'text-2xl',
   },
-  {
-    label: 'Styled Components',
-    proficiency: '90%',
-    icon: 'simple-icons:styled-components',
-    iconClasses: 'text-4xl',
-  },
+
   {
     label: 'Redux',
     proficiency: '90%',
@@ -94,6 +91,12 @@ export const FRONTEND_SKILLS = [
     proficiency: '90%',
     icon: 'fluent:form-20-regular',
     iconClasses: 'text-3xl',
+  },
+  {
+    label: 'WordPress',
+    proficiency: '90%',
+    icon: 'bx:bxl-wordpress',
+    iconClasses: 'text-2xl',
   },
   {
     label: 'Lodash',
@@ -128,18 +131,18 @@ export const BACKEND_SKILLS = [
     icon: 'logos:graphql',
     iconClasses: 'text-3xl',
   },
-  {
-    label: 'Prisma',
-    proficiency: '90%',
-    icon: 'vscode-icons:file-type-light-prisma',
-    iconClasses: 'text-3xl',
-  },
-  {
-    label: 'Sequelize',
-    proficiency: '90%',
-    icon: 'vscode-icons:file-type-sequelize',
-    iconClasses: 'text-3xl',
-  },
+  // {
+  //   label: 'Prisma',
+  //   proficiency: '90%',
+  //   icon: 'vscode-icons:file-type-light-prisma',
+  //   iconClasses: 'text-3xl',
+  // },
+  // {
+  //   label: 'Sequelize',
+  //   proficiency: '90%',
+  //   icon: 'vscode-icons:file-type-sequelize',
+  //   iconClasses: 'text-3xl',
+  // },
   {
     label: 'PostgreSQL',
     proficiency: '90%',
@@ -171,29 +174,12 @@ export const BACKEND_SKILLS = [
     iconClasses: 'text-3xl',
   },
   {
-    label: 'Bitbucket',
-    proficiency: '80%',
-    icon: 'logos:bitbucket',
+    label: 'Stripe',
+    proficiency: '90%',
+    icon: 'logos:stripe',
     iconClasses: 'text-2xl',
-  },
-  {
-    label: 'Docker',
-    proficiency: '80%',
-    icon: 'logos:docker-icon',
-    iconClasses: 'text-2xl',
-  },
-  {
-    label: 'Heroku',
-    proficiency: '80%',
-    icon: 'logos:heroku-icon',
-    iconClasses: 'text-2xl',
-  },
-  {
-    label: 'Vercel',
-    proficiency: '80%',
-    icon: 'logos:vercel-icon',
-    iconClasses: 'text-2xl',
-  },
+  }
+  
 ];
 
 export const FRONTEND_DESCRIPTIONS = [
@@ -205,5 +191,5 @@ export const FRONTEND_DESCRIPTIONS = [
 export const BACKEND_DESCRIPTIONS = [
   'Building RESTful APIs and GraphQL APIs.',
   'Worked with various Node.js modules and libraries, such as Express to develop full-stack applications.',
-  'good understanding of database design in technologies such as PostgreSQL and MySQL.',
+  'Integrating Stripe Payment apis.',
 ];
