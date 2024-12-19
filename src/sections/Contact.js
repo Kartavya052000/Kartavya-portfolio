@@ -1,70 +1,44 @@
-import React, { useRef, useState } from 'react';
-import emailjs from '@emailjs/browser';
-// components
+import React, { useRef } from 'react';
+import { useForm, ValidationError } from '@formspree/react';
+import Swal from 'sweetalert2';
 import Iconify from '../components/Iconify';
 import SocialLinks from '../components/social/SocialLinks';
 import HeadingAnimate from '../components/animate/HeadingAnimate';
 import LoadAnimate from '../components/animate/LoadAnimate';
-// mock
 import { contactEmail } from '../mock/profile';
-import Swal from 'sweetalert2';
 
 // ----------------------------------------------------------------------
 
 export default function Contact() {
-  // const [isSending, setIsSending] = useState(false);
+  const [state, handleSubmit] = useForm("xgvejjbr"); // Formspree setup
+  const formRef = useRef(); // Ref for the form element
+  const isSending = state.submitting;
 
-  const formRef = useRef();
-
-  const sendEmail = async (e) => {
-    e.preventDefault();
-
+  const onSubmit = async (e) => {
+    e.preventDefault(); 
     try {
-      // setIsSending(true);
+      await handleSubmit(e); 
+        await Swal.fire({
+          title: 'Success!',
+          text: 'Your message has been sent successfully.',
+          icon: 'success',
+          confirmButtonText: 'OK',
+        });
 
-      // await emailjs.sendForm(
-      //   process.env.EMAIL_SERVICE_ID,
-      //   process.env.EMAIL_TEMPLATE_ID,
-      //   formRef.current,
-      //   process.env.PUBLIC_KEY
-      // );
-      await emailjs.sendForm(
-        'service_welcfab',
-        'template_tgw98d5',
-          formRef.current,
-          "TGY1mtG78xqGrHk9J"
-      );
-      await Swal.fire({
-        title: 'Success!',
-        icon: 'success',
-        text: 'Message sent successfully',
-        showConfirmButton: false,
-        timer: 1500, // milliseconds
-        willOpen: () => {
-          // Animate the tick icon
-          Swal.showLoading();
-          const timerInterval = setInterval(() => {
-            const content = Swal.getPopup();
-            if (content) {
-              const tickIcon = content.querySelector('.swal2-success-circular-line-left');
-              if (tickIcon) {
-                tickIcon.style.animation = 'rotate-loading 1.5s linear infinite';
-              }
-            }
-          }, 100);
-          Swal.stopTimer();
-          Swal.resumeTimer();
-        },
-        didClose: () => {
-          // clearInterval(timerInterval);
-        }
-      });
+        // Reset the form fields
+        formRef.current.reset();
+      
     } catch (error) {
-      // intentional
-    } finally {
-      // setIsSending(false);
+      // Show error alert
+      await Swal.fire({
+        title: 'Error!',
+        text: 'Something went wrong. Please try again later.',
+        icon: 'error',
+        confirmButtonText: 'OK',
+      });
     }
   };
+
   return (
     <section className="container mx-auto mt-5 px-5 pt-12 pb-10">
       <div className="mb-12 flex w-full flex-col text-center">
@@ -82,18 +56,18 @@ export default function Contact() {
       </div>
       <div className="mx-auto md:w-2/3 lg:w-1/2">
         <LoadAnimate amount={0}>
-          <form ref={formRef} onSubmit={sendEmail}>
+          <form onSubmit={onSubmit} ref={formRef}>
             <div className="-m-2 flex flex-wrap">
-              {/* <div className="w-full p-2 sm:w-1/2">
-                <label htmlFor="name" className="mb:1 text-sm leading-7">
+              <div className="w-full p-2 sm:w-1/2">
+                <label htmlFor="name" className="text-sm leading-7">
                   Name
                 </label>
                 <input
                   type="text"
                   id="name"
-                  required
+                  name="name"
                   placeholder="Full Name"
-                  name="user_name"
+                  required
                   className="w-full rounded border border-primary-700/70 bg-primary-100/20 py-1 px-3 text-base leading-8 outline-none transition-colors duration-200 ease-in-out focus:ring-1 focus:ring-primary-700/70 dark:border-primary-300/50 dark:bg-primary-300/10 dark:focus:ring-primary-300/50"
                 />
               </div>
@@ -104,11 +78,12 @@ export default function Contact() {
                 <input
                   type="email"
                   id="email"
-                  required
+                  name="email"
                   placeholder="email@example.com"
-                  name="user_email"
+                  required
                   className="w-full rounded border border-primary-700/70 bg-primary-100/20 py-1 px-3 text-base leading-8 outline-none transition-colors duration-200 ease-in-out focus:ring-1 focus:ring-primary-700/70 dark:border-primary-300/50 dark:bg-primary-300/10 dark:focus:ring-primary-300/50"
                 />
+                <ValidationError prefix="Email" field="email" errors={state.errors} />
               </div>
               <div className="w-full p-2">
                 <label htmlFor="message" className="text-sm leading-7">
@@ -119,8 +94,9 @@ export default function Contact() {
                   name="message"
                   required
                   className="h-32 w-full resize-none rounded border border-primary-700/70 bg-primary-100/20 py-1 px-3 text-base leading-8 outline-none transition-colors duration-200 ease-in-out focus:ring-1 focus:ring-primary-700/70 dark:border-primary-300/50 dark:bg-primary-300/10 dark:focus:ring-primary-300/50"
-                  defaultValue={'Hello Kartavya,'}
+                  placeholder="Your message..."
                 />
+                <ValidationError prefix="Message" field="message" errors={state.errors} />
               </div>
               <div className="flex w-full justify-end p-2">
                 <button
@@ -128,20 +104,12 @@ export default function Contact() {
                   disabled={isSending}
                   className="text-md mb-2 inline-flex w-28 items-center justify-center rounded-lg border bg-primary-700 px-1 py-2.5 font-medium text-primary-50 hover:bg-primary-700/80 focus:outline-none focus:ring-2 dark:border-primary-700 dark:bg-primary-500 dark:hover:bg-primary-700 dark:focus:ring-primary-600"
                 >
-                  {isSending ? (
-                    'Sending...'
-                  ) : (
-                    <>
-                      {' '}
-                      Send
-                      <Iconify classes="ml-2" icon="fluent:send-16-filled" />
-                    </>
-                  )}
+                  {isSending ? 'Sending...' : 'Send'}
                 </button>
-              </div> */}
+              </div>
               <div className="mt-4 w-full border-t border-neutral-700/50 p-2 pt-6 text-center dark:border-neutral-300/50">
                 <a
-                  href={`mailto:${contactEmail}?subject=Inquiry&body=Hello Dhaval`}
+                  href={`mailto:${contactEmail}?subject=Inquiry&body=Hello`}
                   className="inline-flex items-center space-x-2 hover:text-primary-700 dark:hover:text-primary-300"
                 >
                   <Iconify classes="text-lg text-primary-700 dark:text-primary-300" icon="clarity:email-solid" />
@@ -167,5 +135,3 @@ export default function Contact() {
     </section>
   );
 }
-
-Contact.propTypes = {};
