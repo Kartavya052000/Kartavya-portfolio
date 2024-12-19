@@ -17,12 +17,12 @@ export const FRONTEND_SKILLS = [
     icon: 'logos:react',
     iconClasses: 'text-3xl',
   },
-  {
-    label: 'Expo',
-    proficiency: '85%',
-    icon: 'logos:expo',
-    iconClasses: 'text-3xl',
-  },
+  // {
+  //   label: 'Expo',
+  //   proficiency: '85%',
+  //   icon: 'logos:expo',
+  //   iconClasses: 'text-3xl',
+  // },
   {
     label: 'Javascript',
     proficiency: '90%',
@@ -137,12 +137,7 @@ export const BACKEND_SKILLS = [
     icon: 'logos:openai-icon',
     iconClasses: 'text-3xl',
   },
-  {
-    label: 'Alexa',
-    proficiency: '80%',
-    icon: 'logos:alexa',
-    iconClasses: 'text-3xl',
-  },
+ 
   {
     label: 'Spoonacular',
     proficiency: '80%',
