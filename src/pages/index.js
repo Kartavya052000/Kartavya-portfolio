@@ -8,12 +8,16 @@ import Works from '../sections/Works';
 import Contact from '../sections/Contact';
 // mock
 import { documentTitle } from '../mock/profile';
+import dynamic from 'next/dynamic'
+
+const LottieAnimation = dynamic(() => import('lottie-web'), { ssr: false });
 
 // ------------------------------------------------
 
 export default function Home() {
   const meta = (
     <>
+   <LottieAnimation />
       <title>{documentTitle}</title>
     </>
   );

@@ -8,25 +8,73 @@ export const PROJECT_CATEGORY = {
 // import signtruckImg from "../../"
 export const TABS = [
   {
-    label: 'Work',
+    label: 'All',
     value: PROJECT_CATEGORY.ALL,
     icon: 'fluent:tab-desktop-20-regular',
+  },
+  {
+    label: 'Work',
+    value: PROJECT_CATEGORY.OPEN_SOURCE,
+    icon: 'fluent-mdl2:open-source',
   },
   {
     label: 'Projects',
     value: PROJECT_CATEGORY.Projects,
     icon: 'bx:code-block',
   },
-  // {
-  //   label: 'Open Source',
-  //   value: PROJECT_CATEGORY.OPEN_SOURCE,
-  //   icon: 'fluent-mdl2:open-source',
-  // },
+ 
 ];
 
 const getSkillByLabel = (skills, techLabel) => skills.find(({ label }) => label === techLabel);
 
 export const PROJECTS = [
+  {
+    
+    imgSrc:"https://i.ibb.co/5ksVbMS/truvoye.png" ,
+    title: 'Truvoye',
+    techIcons: [
+      // getSkillByLabel(FRONTEND_SKILLS, 'WordPress'),
+      getSkillByLabel(FRONTEND_SKILLS, 'HTML'),
+      getSkillByLabel(FRONTEND_SKILLS, 'CSS'),
+      getSkillByLabel(FRONTEND_SKILLS, 'React.js'),
+      getSkillByLabel(BACKEND_SKILLS, 'Node.js'),
+      getSkillByLabel(BACKEND_SKILLS, 'Express (Node.js Framework)'),
+      getSkillByLabel(BACKEND_SKILLS, 'Socket.io'),
+      getSkillByLabel(BACKEND_SKILLS, 'Google Maps'),
+      getSkillByLabel(BACKEND_SKILLS, 'Mongodb'),
+      getSkillByLabel(BACKEND_SKILLS, 'AWS'),
+    ],
+    
+    description:
+      'Truvoye web application is a logistics management platform that helps the logistic companies that want to simplify the delivery initiation process ',
+    repoLink: '',
+    sourceLink: 'https://truvoye.com',
+    category: [ PROJECT_CATEGORY.Projects],
+  },
+  {
+    imgSrc:"https://i.ibb.co/BgRJ5cq/In-haus.png" ,
+    title: 'In-Haus',
+    techIcons: [      
+      getSkillByLabel(FRONTEND_SKILLS, 'React Native'),
+      getSkillByLabel(BACKEND_SKILLS, 'Graphql'),
+      getSkillByLabel(FRONTEND_SKILLS, 'Expo'),
+      getSkillByLabel(BACKEND_SKILLS, 'Node.js'),
+      getSkillByLabel(BACKEND_SKILLS, 'Express (Node.js Framework)'),
+      getSkillByLabel(BACKEND_SKILLS, 'Socket.io'),
+      getSkillByLabel(BACKEND_SKILLS, 'Mongodb'),
+      getSkillByLabel(BACKEND_SKILLS, 'AWS'),
+      getSkillByLabel(BACKEND_SKILLS, 'OpenAI'),
+      getSkillByLabel(BACKEND_SKILLS, 'Alexa'),
+      getSkillByLabel(BACKEND_SKILLS, 'NGINX'),
+      getSkillByLabel(BACKEND_SKILLS, 'Spoonacular'),
+    ],
+    
+    description:
+      '“In-haus,” we address this issue by motivating users to complete chores that keep getting postponed. ',
+    repoLink: '',
+    sourceLink: 'https://in-haus.ca/',
+    category: [ PROJECT_CATEGORY.Projects],
+  },
   { 
     imgSrc:"https://i.ibb.co/kJs7mXy/client-signtruck.png" ,
     title: 'SignTruck - Mobile Billboard',
@@ -114,23 +162,9 @@ export const PROJECTS = [
     repoLink: '',
     sourceLink: 'https://janiprosolutions.com',
     category: [ PROJECT_CATEGORY.OPEN_SOURCE],
-  },
+  }
  
-  {
-    
-    imgSrc:"https://i.ibb.co/d4SY509/client-janipro.png" ,
-    title: 'Sports Crush',
-    techIcons: [
-      getSkillByLabel(FRONTEND_SKILLS, 'WordPress'),
-      getSkillByLabel(FRONTEND_SKILLS, 'HTML'),
-      getSkillByLabel(FRONTEND_SKILLS, 'CSS'),
-    ],
-    description:
-      'JaniPro offers an excellent industrial and commercial cleaning services.It offers various services in affordable budget ',
-    repoLink: '',
-    sourceLink: 'https://janiprosolutions.com',
-    category: [ PROJECT_CATEGORY.Projects],
-  },
+
   // {
   //   imgSrc: 'https://images2.imgbox.com/b5/bb/6f5g9QBE_o.png',
   //   title: 'Developer Portfolio',

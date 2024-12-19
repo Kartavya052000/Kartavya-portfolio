@@ -12,6 +12,18 @@ export const FRONTEND_SKILLS = [
     iconClasses: 'text-3xl',
   },
   {
+    label: 'React Native',
+    proficiency: '90%',
+    icon: 'logos:react',
+    iconClasses: 'text-3xl',
+  },
+  {
+    label: 'Expo',
+    proficiency: '85%',
+    icon: 'logos:expo',
+    iconClasses: 'text-3xl',
+  },
+  {
     label: 'Javascript',
     proficiency: '90%',
     icon: 'logos:javascript',
@@ -120,6 +132,31 @@ export const BACKEND_SKILLS = [
     iconClasses: 'text-3xl',
   },
   {
+    label: 'OpenAI',
+    proficiency: '85%',
+    icon: 'logos:openai-icon',
+    iconClasses: 'text-3xl',
+  },
+  {
+    label: 'Alexa',
+    proficiency: '80%',
+    icon: 'logos:alexa',
+    iconClasses: 'text-3xl',
+  },
+  {
+    label: 'Spoonacular',
+    proficiency: '80%',
+    icon: 'mdi:food',
+    iconClasses: 'text-3xl',
+  },
+{
+  label: 'NGINX',
+  proficiency: '90%',
+  icon: 'logos:nginx',
+  iconClasses: 'text-3xl',
+},
+      
+  {
     label: 'REST Api',
     proficiency: '90%',
     icon: 'dashicons:rest-api',
@@ -129,6 +166,18 @@ export const BACKEND_SKILLS = [
     label: 'Graphql',
     proficiency: '90%',
     icon: 'logos:graphql',
+    iconClasses: 'text-3xl',
+  },
+  {
+    label: 'Socket.io',
+    proficiency: '85%',
+    icon: 'logos:socket-io',
+    iconClasses: 'text-3xl',
+  },
+  {
+    label: 'Google Maps',
+    proficiency: '85%',
+    icon: 'logos:google-maps',
     iconClasses: 'text-3xl',
   },
   // {
